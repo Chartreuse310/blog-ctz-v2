@@ -114,6 +114,8 @@ npm run docs:dev
 - 侧边栏是否显示新文章链接
 - 标签和日期是否正确显示
 
+**注意**：如果在 dev server 运行期间新增文章，需要重启 `npm run docs:dev` 才能刷新侧边栏。文章列表会自动热更新，但侧边栏需要重新读取配置。
+
 ## 6. 构建验证
 
 ```bash
@@ -140,7 +142,7 @@ A: 确保 frontmatter 中包含 `title` 和 `date` 字段，且文件位于 `doc
 
 ### Q: 侧边栏没有显示新文章？
 
-A: 侧边栏会自动扫描 `docs/posts/` 目录生成，确保 frontmatter 中包含 `title` 字段。
+A: 侧边栏会自动扫描 `docs/posts/` 目录生成，确保 frontmatter 中包含 `title` 和 `date` 字段。如果在 dev server 运行期间新增文章，需要重启 `npm run docs:dev` 才能刷新侧边栏。
 
 ### Q: 构建失败？
 

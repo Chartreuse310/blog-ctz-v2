@@ -245,7 +245,7 @@
 .profile-card {
   display: flex;
   gap: 24px;
-  align-items: flex-start;
+  align-items: center;
   padding: 24px;
   border-radius: 12px;
   background: var(--vp-c-bg-soft);
@@ -287,6 +287,33 @@
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
   font-weight: 500;
+}
+
+/* ---- Sidebar tweaks ---- */
+.VPSidebar .sidebar-links > li > a {
+  font-weight: 600;
+}
+
+.VPSidebar .sidebar-links > li > a::after {
+  display: none;
+}
+
+.VPSidebar .sidebar-links > li > a + ul {
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 8px;
+  padding-top: 12px;
+}
+
+.sidebar-date {
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+  margin-right: 6px;
+  vertical-align: middle;
 }
 
 /* ---- Responsive ---- */

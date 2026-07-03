@@ -104,3 +104,87 @@
   - Email：ctz_3e0@163.com
 - 更新了 [custom.css](docs/.vitepress/theme/custom.css) 的 `.profile-avatar` 样式，添加 `object-fit: cover` 和边框
 - 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**优化关于页布局和底部链接**
+
+1. 头像顶部对齐名称
+2. 删除"在 GitHub 上编辑此页"链接，改为"查看 GitHub 仓库"
+
+### 实现计划
+
+1. 修改 [custom.css](docs/.vitepress/theme/custom.css)，确保头像与名称顶部对齐
+2. 修改 [config.mts](docs/.vitepress/config.mts)，移除全局 editLink 配置
+3. 在 [about.md](docs/about.md) 中添加"查看 GitHub 仓库"链接
+4. 验证构建是否正常
+
+### 实施内容
+
+- 更新了 [custom.css](docs/.vitepress/theme/custom.css)，为 `.profile-avatar` 和 `.profile-info` 添加 `align-self: flex-start` 确保顶部对齐
+- 修改了 [config.mts](docs/.vitepress/config.mts)，移除了全局的 editLink 配置
+- 更新了 [about.md](docs/about.md)，添加了"查看此博客的源代码"链接
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**新增文章：关于我的最终版知识组织方法——Solution Z的第一版设计**
+
+为了分享个人知识组织方法，发布一篇关于 Solution Z 知识管理系统的文章。
+
+### 实现计划
+
+1. 将文章从 assets 目录移动到 docs/posts/，使用 kebab-case 命名
+2. 配置 frontmatter（title、date、excerpt、tags）
+3. 添加 post-info 文章信息区
+4. 将图片移动到 docs/public/images/ 目录并更新引用路径
+5. 验证构建是否正常
+
+### 实施内容
+
+- 创建了 [solution-z-knowledge-organization-method.md](docs/posts/solution-z-knowledge-organization-method.md)，包含：
+  - frontmatter：标题、日期、摘要、标签（PKM、知识管理、Solution Z）
+  - post-info：日期和标签展示
+  - 正文：Solution Z 系统介绍、与 PARA 系统对比、实践效果
+- 创建了图片目录 `docs/public/images/solution-z-knowledge-organization-method/`
+- 移动并重命名图片为 `pixpin-2026-07-03-12-13-14.png`
+- 更新了文章中的图片引用路径
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**文章页优化与清理**
+
+1. 修复"近期文章"页空值问题
+2. 调整文章列表样式，改为间隔一条线
+3. 日期格式只显示年月日，不显示时分秒
+4. 修复侧边栏自动生成逻辑，确保新文章正确显示
+5. 删除示例文章文件
+
+### 实施内容
+
+- 修改了 [posts.data.mts](docs/.vitepress/theme/components/posts.data.mts)，添加 filter 排除 posts/index.md，避免空值显示；统一日期格式为 YYYY-MM-DD 字符串
+- 修改了 [PostList.vue](docs/.vitepress/theme/components/PostList.vue)，移除本地日期格式化逻辑
+- 修改了 [config.mts](docs/.vitepress/config.mts)：优化 `getSidebarItems` 的正则表达式，支持带引号的标题；侧边栏改为按日期降序排列
+- 更新了 [BLOG_GUIDE.md](BLOG_GUIDE.md)，补充新增文章后需重启 dev server 的说明
+- 删除了 [design-system.md](docs/posts/design-system.md)、[typescript-notes.md](docs/posts/typescript-notes.md)、[vitepress-blog.md](docs/posts/vitepress-blog.md)
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**侧边栏优化**
+
+1. 标题简化：截取到「——」之前
+2. 「近期文章」可点击跳转文章列表页
+3. 「近期文章」下添加分割线，文章标题后显示日期胶囊
+
+### 实施内容
+
+- 修改了 [config.mts](docs/.vitepress/config.mts)：
+  - `getSidebarItems` 中截取标题到「——」之前
+  - 日期胶囊移到标题前面 `<span class="sidebar-date">${date}</span> ${title}`
+  - 给「近期文章」添加 `link: '/posts/'`
+- 修改了 [custom.css](docs/.vitepress/theme/custom.css)：
+  - 添加侧边栏分割线样式
+  - 添加 `.sidebar-date` 日期胶囊样式（margin-left 改为 margin-right）
+- 构建验证通过：`npm run docs:build` 成功

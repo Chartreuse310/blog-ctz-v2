@@ -17,13 +17,22 @@ declare module 'vitepress' {
 export default createContentLoader('posts/*.md', {
   transform(rawData) {
     const posts = rawData
-      .map(({ frontmatter, url }) => ({
-        title: frontmatter.title,
-        date: frontmatter.date,
-        excerpt: frontmatter.excerpt || '',
-        tags: frontmatter.tags || [],
-        url
-      }))
+      .filter(({ url }) => !url.endsWith('/posts/') && !url.endsWith('/posts/index'))
+      .map(({ frontmatter, url }) => {
+        const date = frontmatter.date
+        const formattedDate = typeof date === 'string' 
+          ? date.split('T')[0] 
+          : date instanceof Date 
+            ? date.toISOString().split('T')[0]
+            : ''
+        return {
+          title: frontmatter.title,
+          date: formattedDate,
+          excerpt: frontmatter.excerpt || '',
+          tags: frontmatter.tags || [],
+          url
+        }
+      })
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     return posts
   }

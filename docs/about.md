@@ -36,4 +36,8 @@ title: 关于
 
   - GitHub: [@Chartreuse310](https://github.com/Chartreuse310)
   - Email: ctz_3e0@163.com
+
+  ### GitHub仓库
+
+  - [Blog CTZ](https://github.com/Chartreuse310/blog-ctz-v2)
 </div>

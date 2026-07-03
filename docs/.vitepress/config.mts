@@ -9,14 +9,21 @@ function getSidebarItems() {
       .filter(dirent => dirent.isFile() && dirent.name.endsWith('.md') && dirent.name !== 'index.md')
       .map(dirent => {
         const content = readFileSync(join(postsDir, dirent.name), 'utf-8')
-        const match = content.match(/^title:\s*(.+)$/m)
-        const title = match ? match[1].trim() : dirent.name.replace('.md', '')
+        const titleMatch = content.match(/^title:\s*(["']?)(.+?)\1?$/m)
+        const dateMatch = content.match(/^date:\s*(["']?)(.+?)\1?$/m)
+        let title = titleMatch ? titleMatch[2].trim() : dirent.name.replace('.md', '')
+        const emDashIndex = title.indexOf('——')
+        if (emDashIndex !== -1) {
+          title = title.substring(0, emDashIndex).trim()
+        }
+        const date = dateMatch ? dateMatch[2].trim() : ''
         return {
-          text: title,
-          link: `/posts/${dirent.name.replace('.md', '')}`
+          text: `${date ? `<span class="sidebar-date">${date}</span>` : ''} ${title}`,
+          link: `/posts/${dirent.name.replace('.md', '')}`,
+          date
         }
       })
-      .sort((a, b) => a.text.localeCompare(b.text))
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   } catch (e) {
     console.warn('Failed to load sidebar items:', e)
     return []
@@ -41,6 +48,7 @@ export default defineConfig({
       '/posts/': [
         {
           text: '近期文章',
+          link: '/posts/',
           items: getSidebarItems()
         }
       ]
@@ -52,10 +60,7 @@ export default defineConfig({
       message: '基于 VitePress 构建',
       copyright: '© 2024-Present CTZ'
     },
-    editLink: {
-      pattern: 'https://github.com/your-username/blog/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页'
-    }
+    
   },
   vite: {
     ssr: {
