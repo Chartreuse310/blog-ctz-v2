@@ -1,4 +1,27 @@
 import { defineConfig } from 'vitepress'
+import { readFileSync, readdirSync } from 'fs'
+import { join } from 'path'
+
+function getSidebarItems() {
+  try {
+    const postsDir = join(__dirname, '../posts')
+    return readdirSync(postsDir, { withFileTypes: true })
+      .filter(dirent => dirent.isFile() && dirent.name.endsWith('.md') && dirent.name !== 'index.md')
+      .map(dirent => {
+        const content = readFileSync(join(postsDir, dirent.name), 'utf-8')
+        const match = content.match(/^title:\s*(.+)$/m)
+        const title = match ? match[1].trim() : dirent.name.replace('.md', '')
+        return {
+          text: title,
+          link: `/posts/${dirent.name.replace('.md', '')}`
+        }
+      })
+      .sort((a, b) => a.text.localeCompare(b.text))
+  } catch (e) {
+    console.warn('Failed to load sidebar items:', e)
+    return []
+  }
+}
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -18,11 +41,7 @@ export default defineConfig({
       '/posts/': [
         {
           text: '近期文章',
-          items: [
-            { text: '用 VitePress 搭建个人博客', link: '/posts/vitepress-blog' },
-            { text: 'TypeScript 类型体操笔记', link: '/posts/typescript-notes' },
-            { text: '从零搭建 Design System', link: '/posts/design-system' }
-          ]
+          items: getSidebarItems()
         }
       ]
     },
