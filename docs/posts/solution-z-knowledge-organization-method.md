@@ -1,5 +1,5 @@
 ---
-title: 关于我的最终版（×7.1）知识组织方法——Solution Z的第一版设计
+title: 关于我的终极（？）知识组织方法——Solution Z的第一版设计
 date: 2026-07-03
 excerpt: 这是一种结合了PARA系统、卡片笔记写作法、子弹笔记、Obsidian作者用法的巨型缝合怪！主要差异在于我是一个心理上更希望体系能长期主义一些的人。
 tags:
@@ -7,7 +7,7 @@ tags:
   - Solution Z
 ---
 
-# 关于我的最终版（×7.1）知识组织方法——Solution Z的第一版设计
+# 关于我的终极（？）知识组织方法——Solution Z的第一版设计
 
 <div class="post-info">
   <time>2026-07-03</time>
