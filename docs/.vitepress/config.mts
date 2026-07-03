@@ -31,11 +31,12 @@ function getSidebarItems() {
 }
 
 export default defineConfig({
+  base: '/blog-ctz-v2/',
   lang: 'zh-CN',
   title: "CTZ's Blog",
   description: '记录技术成长与思考',
   head: [
-    ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }]
+    ['link', { rel: 'icon', href: '/blog-ctz-v2/favicon.svg', type: 'image/svg+xml' }]
   ],
   lastUpdated: true,
   themeConfig: {
