@@ -222,3 +222,79 @@
 ### 实施内容
 
 - 修改了 [config.mts](docs/.vitepress/config.mts) 的 `socialLinks` 配置，将 GitHub 链接从 `https://github.com` 更新为 `https://github.com/Chartreuse310`
+
+### 修改建议
+
+**优化文章页样式与布局**
+
+1. 修复"近期文章"页空值问题
+2. 调整文章列表样式，改为间隔一条线
+3. 日期格式只显示年月日，不显示时分秒
+4. 修复侧边栏自动生成逻辑，确保新文章正确显示
+5. 删除示例文章文件
+
+### 实施内容
+
+- 修改了 [posts.data.mts](docs/.vitepress/theme/components/posts.data.mts)，添加 filter 排除 posts/index.md，避免空值显示；统一日期格式为 YYYY-MM-DD 字符串
+- 修改了 [PostList.vue](docs/.vitepress/theme/components/PostList.vue)，移除本地日期格式化逻辑
+- 修改了 [config.mts](docs/.vitepress/config.mts)：优化 `getSidebarItems` 的正则表达式，支持带引号的标题；侧边栏改为按日期降序排列
+- 更新了 [BLOG_GUIDE.md](BLOG_GUIDE.md)，补充新增文章后需重启 dev server 的说明
+- 删除了 [design-system.md](docs/posts/design-system.md)、[typescript-notes.md](docs/posts/typescript-notes.md)、[vitepress-blog.md](docs/posts/vitepress-blog.md)
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**侧边栏优化**
+
+1. 标题简化：截取到「——」之前
+2. 「近期文章」可点击跳转文章列表页
+3. 「近期文章」下添加分割线，文章标题后显示日期胶囊
+
+### 实施内容
+
+- 修改了 [config.mts](docs/.vitepress/config.mts)：
+  - `getSidebarItems` 中截取标题到「——」之前
+  - 日期胶囊移到标题前面 `<span class="sidebar-date">${date}</span> ${title}`
+  - 给「近期文章」添加 `link: '/posts/'`
+- 修改了 [custom.css](docs/.vitepress/theme/custom.css)：
+  - 添加侧边栏分割线样式
+  - 添加 `.sidebar-date` 日期胶囊样式（margin-left 改为 margin-right）
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**完善 BLOG_GUIDE.md 侧边栏文档**
+
+在博客使用规范中添加侧边栏相关的步骤和说明。
+
+### 实施内容
+
+- 更新了 [BLOG_GUIDE.md](BLOG_GUIDE.md)：
+  - 在快速参考清单中添加侧边栏检查步骤
+  - 新增第7章「侧边栏说明」，包含显示规则、交互行为和更新注意事项
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**移除「近期文章」页顶部标题**
+
+为了简化页面布局，删除文章列表页顶部的「所有文章 按时间倒序排列」标题区域。
+
+### 实施内容
+
+- 修改了 [index.md](docs/posts/index.md)，删除了 `<BlogHero name="所有文章" tagline="按时间倒序排列" />` 组件
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**诊断与清理**
+
+执行项目诊断，清理 assets 目录中已处理的残留文件，并更新 changelog 记录。
+
+### 实施内容
+
+- 删除了 assets 目录中已处理的残留文件：
+  - `260703 关于我的最终版（×7.1）知识组织方法——Solution Z的第一版设计.md`
+  - `PixPin_2026-07-03_12-13-14.png`
+  - `260702_沙楚子头像（改）.png`
+- 更新了 [changelog.md](changelog.md)，补充了最近的更新记录
