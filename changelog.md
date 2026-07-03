@@ -188,3 +188,16 @@
   - 添加侧边栏分割线样式
   - 添加 `.sidebar-date` 日期胶囊样式（margin-left 改为 margin-right）
 - 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**完善 BLOG_GUIDE.md 侧边栏文档**
+
+在博客使用规范中添加侧边栏相关的步骤和说明。
+
+### 实施内容
+
+- 更新了 [BLOG_GUIDE.md](BLOG_GUIDE.md)：
+  - 在快速参考清单中添加侧边栏检查步骤
+  - 新增第7章「侧边栏说明」，包含显示规则、交互行为和更新注意事项
+- 构建验证通过：`npm run docs:build` 成功
