@@ -55,7 +55,7 @@ export default defineConfig({
       ]
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com' }
+      { icon: 'github', link: 'https://github.com/Chartreuse310' }
     ],
     footer: {
       message: '基于 VitePress 构建',

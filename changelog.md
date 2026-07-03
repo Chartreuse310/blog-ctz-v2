@@ -212,3 +212,13 @@
 
 - 修改了 [index.md](docs/posts/index.md)，删除了 `<BlogHero name="所有文章" tagline="按时间倒序排列" />` 组件
 - 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**更新右上角 GitHub 链接**
+
+将界面右上角的 GitHub 标志链接指向用户的 GitHub 主页。
+
+### 实施内容
+
+- 修改了 [config.mts](docs/.vitepress/config.mts) 的 `socialLinks` 配置，将 GitHub 链接从 `https://github.com` 更新为 `https://github.com/Chartreuse310`
