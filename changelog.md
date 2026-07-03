@@ -56,3 +56,51 @@
 
 - 修改了 [config.mts](docs/.vitepress/config.mts) 的 `getSidebarItems` 函数，添加了错误处理机制
 - 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**新增图片管理规范**
+
+为了规范博客文章中图片的存储和引用方式，避免路径混乱和 404 错误，建议建立图片管理规范。
+
+### 实现计划
+
+1. 更新 [BLOG_GUIDE.md](BLOG_GUIDE.md)，在快速参考清单中添加图片相关步骤
+2. 新增「图片管理」章节，包含目录结构、命名规则、引用方式、优化建议
+3. 在常见问题区补充图片相关 Q&A
+4. 创建 `docs/public/images/` 目录并添加 `.gitkeep`
+5. 验证构建是否正常
+
+### 实施内容
+
+- 更新了 [BLOG_GUIDE.md](BLOG_GUIDE.md)，添加了图片管理规范：
+  - 在快速参考清单中增加了图片相关步骤（第3步：放入图片文件；第4步：编写正文并引用图片）
+  - 新增「图片管理」章节（目录结构、命名规则、引用方式、优化建议）
+  - 补充了图片不显示和中文文件名问题的 Q&A
+- 创建了 `docs/public/images/` 目录并添加 `.gitkeep` 文件
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**更新简介页个人信息**
+
+为了展示更准确的个人信息，需要更新 about.md 页面的名称、简介、头像、tags 和联系方式。
+
+### 实现计划
+
+1. 将头像图片复制到 `docs/public/images/about/` 目录并重命名为 `avatar.png`
+2. 更新 [about.md](docs/about.md) 的名称、简介、头像、tags 和联系方式
+3. 更新 [custom.css](docs/.vitepress/theme/custom.css) 中头像样式，适配图片显示
+4. 验证构建是否正常
+
+### 实施内容
+
+- 更新了 [about.md](docs/about.md)：
+  - 名称：沙楚子（CTZ）
+  - 简介：一个喜欢瞎折腾的设计师 👾
+  - 头像：使用 `/images/about/avatar.png`
+  - tags：交互设计 / 建筑学 / 场景美术 / 技术美术 / 吉他 / PKM
+  - GitHub：@Chartreuse310
+  - Email：ctz_3e0@163.com
+- 更新了 [custom.css](docs/.vitepress/theme/custom.css) 的 `.profile-avatar` 样式，添加 `object-fit: cover` 和边框
+- 构建验证通过：`npm run docs:build` 成功

@@ -6,24 +6,24 @@ title: 关于
 
 <div class="about-section">
   <div class="profile-card">
-    <div class="profile-avatar">C</div>
+    <img class="profile-avatar" src="/images/about/avatar.png" alt="头像" />
     <div class="profile-info">
-      <h3>CTZ</h3>
-      <p>前端开发者，对设计系统和工程化有持续的热情。喜欢从零搭建工具，也喜欢阅读优秀的开源代码。</p>
+      <h3>沙楚子（CTZ）</h3>
+      <p>一个喜欢瞎折腾的设计师 👾</p>
       <div class="skill-tags">
-        <span class="skill-tag">Vue</span>
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">VitePress</span>
-        <span class="skill-tag">Design System</span>
-        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">交互设计</span>
+        <span class="skill-tag">建筑学</span>
+        <span class="skill-tag">场景美术</span>
+        <span class="skill-tag">技术美术</span>
+        <span class="skill-tag">吉他</span>
+        <span class="skill-tag">PKM</span>
       </div>
     </div>
   </div>
 
   ## 关于这个博客
 
-  这个博客使用 [VitePress](https://vitepress.dev) 构建，主要记录我在前端开发和设计系统方面的学习与实践。所有文章的源码都在 GitHub 上。
+  这个博客使用 [VitePress](https://vitepress.dev) 构建，主要记录我在设计和技术方面的学习与实践。所有文章的源码都在 GitHub 上。
 
   ### 技术栈
 
@@ -34,6 +34,6 @@ title: 关于
 
   ### 联系方式
 
-  - GitHub: [@your-username](https://github.com)
-  - Email: your-email@example.com
+  - GitHub: [@Chartreuse310](https://github.com/Chartreuse310)
+  - Email: ctz_3e0@163.com
 </div>

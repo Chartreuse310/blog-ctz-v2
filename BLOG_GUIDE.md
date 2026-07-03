@@ -6,10 +6,11 @@
 
 1. [ ] 在 `docs/posts/` 下创建 `.md` 文件（kebab-case 命名）
 2. [ ] 填写 frontmatter（title、date、excerpt、tags）
-3. [ ] 编写文章正文
-4. [ ] `npm run docs:dev` 本地预览验证
-5. [ ] `npm run docs:build` 构建验证
-6. [ ] 提交代码并部署
+3. [ ] 将文章图片放入 `docs/public/images/文章名/` 目录（如有）
+4. [ ] 编写文章正文，在正文中引用图片
+5. [ ] `npm run docs:dev` 本地预览验证
+6. [ ] `npm run docs:build` 构建验证
+7. [ ] 提交代码并部署
 
 ---
 
@@ -65,7 +66,43 @@ tags:
 ...
 ```
 
-## 4. 本地预览验证
+## 4. 图片管理
+
+文章中使用的图片需要存放在 `docs/public/images/` 目录下，按文章名创建子目录管理。
+
+### 目录结构
+
+```
+docs/public/
+├── images/           # 存放所有文章图片
+│   ├── post-title/   # 按文章名创建子目录（与 .md 文件名一致）
+│   │   └── img1.png
+│   └── another-post/
+│       └── screenshot.png
+└── favicon.svg
+```
+
+### 命名规则
+
+- 使用 **kebab-case**（小写字母 + 连字符）
+- 避免中文文件名（可能导致编码问题）
+- 保持描述性，便于识别
+
+### 引用方式
+
+在 Markdown 中使用根路径 `/` 引用图片：
+
+```markdown
+![图片描述](/images/post-title/img1.png)
+```
+
+### 优化建议
+
+- 建议使用 WebP 或 AVIF 格式减小体积
+- 控制图片尺寸，避免超大图
+- 图片宽度建议不超过 1200px
+
+## 5. 本地预览验证
 
 ```bash
 npm run docs:dev
@@ -77,7 +114,7 @@ npm run docs:dev
 - 侧边栏是否显示新文章链接
 - 标签和日期是否正确显示
 
-## 5. 构建验证
+## 6. 构建验证
 
 ```bash
 npm run docs:build
@@ -88,6 +125,14 @@ npm run docs:build
 ---
 
 ## ❓ 常见问题
+
+### Q: 图片不显示（404）？
+
+A: 确保图片文件位于 `docs/public/images/文章名/` 目录下，且引用路径正确（如 `/images/post-title/img.png`）。
+
+### Q: 中文文件名导致图片无法加载？
+
+A: 避免使用中文文件名，改为 kebab-case 命名（如 `screenshot.png` 而非 `截图.png`）。
 
 ### Q: 文章列表没有显示新文章？
 
