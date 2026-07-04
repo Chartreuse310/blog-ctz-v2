@@ -298,3 +298,16 @@
   - `PixPin_2026-07-03_12-13-14.png`
   - `260702_沙楚子头像（改）.png`
 - 更新了 [changelog.md](changelog.md)，补充了最近的更新记录
+
+## 2026-07-04
+
+### 修改建议
+
+**增加文章页标题下方空白间距**
+
+文章标题与日期、tags 之间距离过近，需要增加标题下方的空白间距以提升阅读体验。
+
+### 实施内容
+
+- 修改了 [custom.css](docs/.vitepress/theme/custom.css)，为 `.vp-doc h1` 添加了 `margin-bottom: 16px`，增加标题与下方内容的间距
+- 构建验证通过：`npm run docs:build` 成功
