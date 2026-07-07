@@ -311,3 +311,56 @@
 
 - 修改了 [custom.css](docs/.vitepress/theme/custom.css)，为 `.vp-doc h1` 添加了 `margin-bottom: 16px`，增加标题与下方内容的间距
 - 构建验证通过：`npm run docs:build` 成功
+
+## 2026-07-08
+
+### 修改建议
+
+**新增文章：关于我是怎样在LLM wiki的辅导下为讲座做准备的**
+
+发布一篇关于使用LLM wiki辅助讲座准备的经验分享文章。
+
+### 实施内容
+
+- 创建了 [how-i-prepared-for-lecture-with-llm-wiki.md](docs/posts/how-i-prepared-for-lecture-with-llm-wiki.md)：
+  - 文件名使用 kebab-case 格式
+  - 填写完整 frontmatter（title、date、excerpt、tags）
+  - 添加 post-info 区域显示日期和标签
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**修改右侧目录栏标题**
+
+文章页面右侧默认显示的"on this page"是英文，需要改为中文"文章目录"以符合博客风格。
+
+### 实施内容
+
+- 修改了 [config.mts](docs/.vitepress/config.mts)，在 `themeConfig` 中配置 `outline: { label: '文章目录' }`，将右侧目录栏标题改为中文
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**为文章添加二级标题以显示右侧目录**
+
+新文章缺少二级标题，导致右侧"文章目录"为空。需要添加适当的章节标题结构。
+
+### 实施内容
+
+- 修改了 [how-i-prepared-for-lecture-with-llm-wiki.md](docs/posts/how-i-prepared-for-lecture-with-llm-wiki.md)，添加了4个二级标题：
+  - `## 从剪藏到伴读`
+  - `## 概念提取与文献追溯`
+  - `## 让LLM wiki帮我准备讲座提问`
+  - `## 收获：思考流程的内化`
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**减少文章列表页文章间间距**
+
+"近期文章"页中各文章项之间的间距过大，需要减小以提升页面紧凑感。
+
+### 实施内容
+
+- 修改了 [custom.css](docs/.vitepress/theme/custom.css)，将 `.post-item` 的 `padding` 从 `20px 0` 调整为 `16px 0`
+- 构建验证通过：`npm run docs:build` 成功

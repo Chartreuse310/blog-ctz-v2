@@ -61,7 +61,9 @@ export default defineConfig({
       message: '基于 VitePress 构建',
       copyright: '© 2024-Present CTZ'
     },
-    
+    outline: {
+      label: '文章目录'
+    }
   },
   vite: {
     ssr: {
