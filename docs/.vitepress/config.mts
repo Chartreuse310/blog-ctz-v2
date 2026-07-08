@@ -35,6 +35,11 @@ export default defineConfig({
   lang: 'zh-CN',
   title: "CTZ's Blog",
   description: '记录技术成长与思考',
+  markdown: {
+    headers: {
+      level: [2, 3]
+    }
+  },
   head: [
     ['link', { rel: 'icon', href: '/blog-ctz-v2/favicon.svg', type: 'image/svg+xml' }]
   ],
@@ -61,9 +66,7 @@ export default defineConfig({
       message: '基于 VitePress 构建',
       copyright: '© 2024-Present CTZ'
     },
-    outline: {
-      label: '文章目录'
-    }
+    outline: false
   },
   vite: {
     ssr: {

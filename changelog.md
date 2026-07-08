@@ -362,5 +362,38 @@
 
 ### 实施内容
 
-- 修改了 [custom.css](docs/.vitepress/theme/custom.css)，将 `.post-item` 的 `padding` 从 `20px 0` 调整为 `16px 0`
+- 修改了 [custom.css](docs/.vitepress/theme/custom.css)，重构文章列表间距布局：
+  - `.post-item` 设置 `padding: 0; margin-bottom: 0;`
+  - 使用相邻选择器 `.post-item + .post-item` 设置分隔线和间距：`border-top: 1px solid; margin-top: 8px; padding-top: 8px;`
+  - 修复 `.post-title` 和 `.post-excerpt` 继承 VitePress 默认 margin 的问题
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**右侧目录标题显示当前文章标题**
+
+文章页面右侧目录的标题"文章目录"是固定的，需要改为动态显示当前文章的标题。
+
+### 实施内容
+
+- 创建了 [Outline.vue](docs/.vitepress/theme/components/Outline.vue) 自定义目录组件：
+  - 使用 `page.value.title` 动态显示文章标题作为目录标签
+  - 通过 `page.value.headers` 获取页面标题结构
+  - 支持 h2 和 h3 级别的目录项，带有缩进和激活状态高亮
+- 创建了 [DocLayout.vue](docs/.vitepress/theme/layouts/DocLayout.vue) 自定义布局，通过 `#aside-top` 插槽注入自定义目录
+- 修改了 [config.mts](docs/.vitepress/config.mts)：
+  - 添加 `markdown.headers` 配置启用标题提取
+  - 设置 `outline: false` 禁用默认目录
+- 修改了 [index.ts](docs/.vitepress/theme/index.ts)，注册自定义组件和布局
+- 构建验证通过：`npm run docs:build` 成功
+
+### 修改建议
+
+**删除文章列表页的右侧边栏**
+
+"近期文章"页不需要右侧目录边栏，仅文章详情页需要保留。
+
+### 实施内容
+
+- 修改了 [index.md](docs/posts/index.md)，在 frontmatter 中添加 `aside: false`，禁用右侧边栏
 - 构建验证通过：`npm run docs:build` 成功
