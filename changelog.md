@@ -387,13 +387,48 @@
 - 修改了 [index.ts](docs/.vitepress/theme/index.ts)，注册自定义组件和布局
 - 构建验证通过：`npm run docs:build` 成功
 
+## 2026-07-10
+
 ### 修改建议
 
-**删除文章列表页的右侧边栏**
+**新增文章：VexTab使用方法**
 
-"近期文章"页不需要右侧目录边栏，仅文章详情页需要保留。
+发布一篇关于 VexTab 乐谱书写语言的使用指南文章。
+
+### 实现计划
+
+1. 安装 vextab 和 vexflow 依赖
+2. 创建 VexTabDemo 组件，实现渲染效果和源码同时显示
+3. 创建 markdown-it 插件，自动转换 ```vextab 代码块为渲染组件
+4. 将文章从 assets 目录移动到 docs/posts/，使用 kebab-case 命名
+5. 配置 frontmatter（title、date、excerpt、tags）
+6. 添加 post-info 文章信息区
+7. 验证构建是否正常
 
 ### 实施内容
 
-- 修改了 [index.md](docs/posts/index.md)，在 frontmatter 中添加 `aside: false`，禁用右侧边栏
+- 安装了 `vextab` 和 `vexflow` 依赖
+- 创建了 [VexTabDemo.vue](docs/.vitepress/theme/components/VexTabDemo.vue) 组件：
+  - 上方显示 VexTab 渲染效果（SVG格式）
+  - 下方显示 VexTab 源码
+  - 支持一键复制源码
+  - 响应式布局，自动适应宽度
+  - 支持 scale 参数调整缩放
+- 创建了 [markdown-it-vextab.ts](docs/.vitepress/markdown-it-vextab.ts) 插件：
+  - 自动将 Markdown 中的 ```vextab 代码块转换为 VexTabDemo 组件
+  - 使用 base64 编码安全传递代码内容
+- 修改了 [config.mts](docs/.vitepress/config.mts)：
+  - 注册 markdown-it vextab 插件
+  - 将 vextab 和 vexflow 添加到 ssr.noExternal 中
+  - 添加 ignoreDeadLinks 配置（脚注内容误判为死链接）
+- 修改了 [index.ts](docs/.vitepress/theme/index.ts)，注册 VexTabDemo 全局组件
+- 创建了 [vextab-usage-guide.md](docs/posts/vextab-usage-guide.md) 文章：
+  - 文件名使用 kebab-case 格式
+  - 填写完整 frontmatter（title、date、excerpt、tags: vextab、吉他、程序）
+  - 添加 post-info 区域显示日期和标签
+  - 包含 VexTab 基本语法、参数速查、常用模板等内容
+  - 所有 ```vextab 代码块自动渲染为带预览效果的演示组件
+- 删除了 assets 目录中的原始文件
 - 构建验证通过：`npm run docs:build` 成功
+
+## 2026-07-08

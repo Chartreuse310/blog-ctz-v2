@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { readFileSync, readdirSync } from 'fs'
 import { join } from 'path'
+import { vextabPlugin } from './markdown-it-vextab'
 
 function getSidebarItems() {
   try {
@@ -38,11 +39,15 @@ export default defineConfig({
   markdown: {
     headers: {
       level: [2, 3]
+    },
+    config: (md) => {
+      md.use(vextabPlugin)
     }
   },
   head: [
     ['link', { rel: 'icon', href: '/blog-ctz-v2/favicon.svg', type: 'image/svg+xml' }]
   ],
+  ignoreDeadLinks: true,
   lastUpdated: true,
   themeConfig: {
     nav: [
@@ -70,7 +75,7 @@ export default defineConfig({
   },
   vite: {
     ssr: {
-      noExternal: []
+      noExternal: ['vextab', 'vexflow']
     }
   }
 })

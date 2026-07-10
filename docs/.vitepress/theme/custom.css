@@ -272,6 +272,32 @@
   vertical-align: middle;
 }
 
+/* ---- Footnotes ---- */
+.footnotes {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 0.9em;
+  color: var(--vp-c-text-2);
+}
+
+.footnotes p {
+  margin: 8px 0;
+  line-height: 1.7;
+}
+
+.footnotes .fn-back {
+  text-decoration: none;
+  font-size: 0.85em;
+  margin-left: 4px;
+}
+
+.vp-doc sup a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .blog-hero h1 {
