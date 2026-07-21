@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-07-21
+
+### 修改建议
+
+**新增文章：我为什么要弹吉他**
+
+发布一篇关于弹吉他心路历程的文章，从最初的热爱到后来的焦虑，再到最终的醒悟。
+
+### 实施内容
+
+- 创建了 [why-i-play-guitar.md](docs/posts/why-i-play-guitar.md)：
+  - 文件名使用 kebab-case 格式
+  - 填写完整 frontmatter（title、date、excerpt、tags: 写作、吉他）
+  - 添加 post-info 区域显示日期和标签
+  - 包含「时间顺序版」和「意识流版」两个版本的叙述
+- 删除了 assets 目录中的原始文件 `260720 我为什么要弹吉他.md`
+- 构建验证通过：`npm run docs:build` 成功
+
 ## 2026-07-03
 
 ### 修改建议

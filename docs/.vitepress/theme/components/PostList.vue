@@ -7,6 +7,7 @@ interface Post {
   date: string
   excerpt: string
   tags?: string[]
+  author?: string
   url: string
 }
 </script>
@@ -18,6 +19,7 @@ interface Post {
         <h2 class="post-title">{{ post.title }}</h2>
         <div class="post-meta">
           <time>{{ post.date }}</time>
+          <span v-if="post.author" class="post-author">by {{ post.author }}</span>
           <span v-for="tag in post.tags" :key="tag" class="post-tag">{{ tag }}</span>
         </div>
         <p class="post-excerpt">{{ post.excerpt }}</p>

@@ -147,6 +147,12 @@
   font-weight: 500;
 }
 
+.post-author {
+  font-size: 13px;
+  color: var(--vp-c-text-3);
+  font-style: italic;
+}
+
 .post-excerpt {
   font-size: 15px;
   line-height: 1.7;

@@ -5,6 +5,7 @@ export interface Post {
   date: string
   excerpt: string
   tags?: string[]
+  author?: string
   url: string
 }
 
@@ -30,6 +31,7 @@ export default createContentLoader('posts/*.md', {
           date: formattedDate,
           excerpt: frontmatter.excerpt || '',
           tags: frontmatter.tags || [],
+          author: frontmatter.author || '',
           url
         }
       })
