@@ -84,4 +84,4 @@ docs/
 
 ## 📄 许可证
 
-MIT License
+本项目采用 [知识共享署名 4.0 国际许可协议](https://creativecommons.org/licenses/by/4.0/)（CC BY 4.0）。
