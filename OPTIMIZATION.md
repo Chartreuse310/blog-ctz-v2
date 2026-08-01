@@ -37,8 +37,16 @@
     - **RSS**：新增 `rss.ts`，用 `buildEnd` + `createContentLoader('posts/*.md')` 复用单一数据源 + `feed` 包生成 RSS 2.0 feed.xml。head 加 RSS 自动发现标签。
   - TODO（待你后续处理）：og:image 当前引用 `og/default.png` 但**图片文件尚未创建**，需设计一张 1200×630 默认分享图放到 `docs/public/og/default.png`。文件缺失时分享预览无图但不报错。
 
-- [ ] **#5 未启用本地搜索**
-  - 方案：`themeConfig.search = { provider: 'local' }`。
+- [x] **#5 文章列表页 tag 筛选 + 搜索** ✅（需求调整：从「本地搜索」改为「tag 筛选为主 + 集成搜索」）
+  - 落地（2026-08-01）：重写 `PostList.vue`，在列表顶部加筛选区：
+    - **tag 横排**：按出现次数降序，单选切换（点已选取消、点另一个切换），选中态高亮
+    - **搜索框**：title/excerpt/tags 子串匹配，不区分大小写
+    - **AND 联动**：tag 与搜索同时满足才显示
+    - **文章项内 tag 可点击**触发筛选（增强便利）
+    - **空状态**：无匹配时显示提示 + 清除筛选按钮
+  - CSS 复用现有 `.post-tag` 基础样式，新增选中态/搜索框/空状态样式（brand 色变量）。
+  - 验证：构建通过；SSR 输出仍为全部 4 篇（SEO 不损）；浏览器实测 tag 筛选/搜索/AND 联动/空状态/清除全部正常。
+  - 未做 VitePress 全局模态搜索（它是模态框无法内联，列表页内联搜索已覆盖核心需求）。
 
 - [ ] **#6 vextab 用 base64 经 HTML 属性传递**
   - base64 放大约 33%，乐谱长时属性膨胀。可改用 provide/inject 或占位符方案。

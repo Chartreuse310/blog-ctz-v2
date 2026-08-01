@@ -304,6 +304,121 @@
   color: var(--vp-c-brand-1);
 }
 
+/* ---- Filter bar (search + tag filter) ---- */
+.filter-bar {
+  margin: 16px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 360px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: var(--vp-c-text-3);
+}
+
+.search-input:focus {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+}
+
+.tag-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 筛选按钮：复用 .post-tag 基础外观，补充可点击交互态 */
+.tag-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  border: 1px solid transparent;
+}
+
+.tag-filter-btn:hover {
+  border-color: var(--vp-c-brand-2);
+}
+
+.tag-filter-active {
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-bg);
+  border-color: var(--vp-c-brand-1);
+}
+
+.tag-filter-active .tag-count {
+  color: var(--vp-c-bg);
+  opacity: 0.7;
+}
+
+.tag-count {
+  font-size: 11px;
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 文章项内的 tag：可点击触发筛选 */
+.post-tag-link {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.post-tag-link:hover {
+  background: var(--vp-c-brand-2);
+  color: var(--vp-c-bg);
+}
+
+/* 筛选状态行 + 空状态 */
+.filter-status {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--vp-c-text-3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clear-btn {
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--vp-c-brand-1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.clear-btn:hover {
+  color: var(--vp-c-brand-2);
+}
+
+.empty-state {
+  margin: 48px 0;
+  text-align: center;
+  color: var(--vp-c-text-3);
+}
+
+.empty-state p {
+  margin: 0 0 12px;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .blog-hero h1 {
@@ -326,5 +441,9 @@
 
   .skill-tags {
     justify-content: center;
+  }
+
+  .search-input {
+    max-width: 100%;
   }
 }
