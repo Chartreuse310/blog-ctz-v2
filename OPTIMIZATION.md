@@ -11,10 +11,11 @@
   - 尝试（2026-08-01）：用 `#doc-before` slot 注入 PostMeta 组件。**回退原因**：`#doc-before` 渲染在 H1 **上方**，导致视觉顺序变成 meta → H1，明显变丑。
   - 教训：若要重做，应找能让 meta 出现在 **H1 下方** 的注入点（如自定义 doc layout / `#doc-top` 之外的方案），且不破坏现有视觉。暂搁置。
 
-- [ ] **#2 两套数据加载逻辑需统一**
+- [x] **#2 两套数据加载逻辑需统一** ✅
   - 现状：`PostList.vue` 用 `createContentLoader`；`config.mts` 的 `getSidebarItems` 用 `fs.readdirSync` + 正则。
   - 问题：脆弱，且有 `——` 破折号截断标题的隐式约定。
-  - 方案：sidebar 也基于 frontmatter `title`，删掉破折号截断约定。
+  - 落地（2026-08-01，路径 A）：侧边栏列文章只是当初顺手填的（非有意设计），故删除 `getSidebarItems()` 函数、`fs`/`path` import、`themeConfig.sidebar` 整块。文章数据单一来源为 `createContentLoader`（PostList + posts.data.mts）。
+  - 验证：构建通过；4 篇文章页 sidebar DOM 消失、outline-container 保留；列表页正常显示 4 篇文章；about 页无副作用。config.mts 从 82 行精简到 42 行。
 
 - [ ] **#3 自定义 Outline 是体验倒退**
   - 现状：关掉原生 outline，自写 `Outline.vue`，仅在点击时高亮。
