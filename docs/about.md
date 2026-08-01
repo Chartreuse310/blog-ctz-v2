@@ -11,10 +11,10 @@ title: 关于
       <h3>沙楚子（CTZ）</h3>
       <p>一个喜欢瞎折腾的设计师 👾</p>
       <div class="skill-tags">
-        <span class="skill-tag">交互设计</span>
+        <span class="skill-tag">概念设计</span>
         <span class="skill-tag">建筑学</span>
-        <span class="skill-tag">场景美术</span>
-        <span class="skill-tag">技术美术</span>
+        <span class="skill-tag">交互设计</span>
+        <span class="skill-tag">插画</span>
         <span class="skill-tag">吉他</span>
         <span class="skill-tag">PKM</span>
       </div>
