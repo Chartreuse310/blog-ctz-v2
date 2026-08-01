@@ -17,10 +17,13 @@
   - 落地（2026-08-01，路径 A）：侧边栏列文章只是当初顺手填的（非有意设计），故删除 `getSidebarItems()` 函数、`fs`/`path` import、`themeConfig.sidebar` 整块。文章数据单一来源为 `createContentLoader`（PostList + posts.data.mts）。
   - 验证：构建通过；4 篇文章页 sidebar DOM 消失、outline-container 保留；列表页正常显示 4 篇文章；about 页无副作用。config.mts 从 82 行精简到 42 行。
 
-- [ ] **#3 自定义 Outline 是体验倒退**
+- [x] **#3 自定义 Outline 是体验倒退** ✅
   - 现状：关掉原生 outline，自写 `Outline.vue`，仅在点击时高亮。
   - 问题：滚动不跟随高亮。
-  - 方案：改用主题原生 outline（`outline: { level: [2,3], label }`）。
+  - 调研结论（2026-08-01）：原生 outline 的 `label` 是静态 string，**无法 per-page 显示文章标题**（VitePress 1.6.4 无此机制）。因此"自定义 outline 显示文章标题"的诉求合理，应保留自定义、只补滚动高亮。
+  - 落地（方案 1 + 要 marker）：`Outline.vue` 改为复用 VitePress 内部的 `useActiveAnchor` + `getHeaders`（从 `vitepress/dist/client/theme-default/composables/outline` 导入），获得滚动跟随高亮 + 滑动 marker。保留自定义的"文章标题"label 和样式。
+  - 过程中修正两个坑：(1) 不能用 `theme.outline` 作为 `getHeaders` 的 range —— 全局 `outline:false` 会让它返回空数组，改为固定传 `[2,3]`；(2) SSR 阶段列表为空是官方设计（getHeaders 走客户端 DOM 查询），label 仍 SSR 可用。
+  - 验证：构建通过；浏览器实测点击 outline 链接后 active 高亮生效、marker 定位（top:39px, opacity:1）正确，与原生公式一致。
 
 ## 🟡 建议优化
 
