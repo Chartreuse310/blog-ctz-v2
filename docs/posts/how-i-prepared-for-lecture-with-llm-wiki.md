@@ -8,11 +8,6 @@ tags:
 
 # 关于我是怎样在LLM wiki的辅导下为讲座做准备的
 
-<div class="post-info">
-  <time>2026-07-07</time>
-  <span class="post-tag">pkm</span>
-</div>
-
 最近沉迷LLM wiki，几乎已经把这玩意儿当成了我的剪藏库。一开始只是满足了我的知识囤积癖，最近的一次实践让我忽然发现了它带给我的意义之一。
 
 ## 从剪藏到伴读

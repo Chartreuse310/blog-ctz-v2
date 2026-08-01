@@ -4,12 +4,14 @@
 
 ## 🔴 重要问题
 
-- [ ] **#1 文章正文手动重复渲染元信息**（已尝试，回退）
+- [x] **#1 文章正文手动重复渲染元信息** ✅
   - 现状：每篇文章 frontmatter 写一遍 title/date/author/tags，正文又手写一遍 `<div class="post-info">`。
   - 问题：易遗漏/不一致，date 改两处。
   - 方案：在 `DocLayout.vue` 用 `#doc-before` slot 从 frontmatter 自动注入。
-  - 尝试（2026-08-01）：用 `#doc-before` slot 注入 PostMeta 组件。**回退原因**：`#doc-before` 渲染在 H1 **上方**，导致视觉顺序变成 meta → H1，明显变丑。
-  - 教训：若要重做，应找能让 meta 出现在 **H1 下方** 的注入点（如自定义 doc layout / `#doc-top` 之外的方案），且不破坏现有视觉。暂搁置。
+  - 尝试 1（2026-08-01，回退）：用 `#doc-before` slot 注入。**失败原因**：该 slot 渲染在 H1 **上方**，破坏 `H1 → meta → 正文` 顺序，视觉变丑。
+  - 调研结论：H1 是 markdown `<Content>` 内部产物，**主题层没有任何 slot 能落在「H1 下方、正文上方」**。
+  - 落地（2026-08-01，路径 A markdown-it 插件）：新增 `markdown-it-postmeta.ts`，用 `md.core.ruler.after('block')` 在 H1 token 之后注入 `<div class="post-info">`。数据来自 `env.frontmatter`（VitePress 的 frontmatter 插件在本插件前已写好）。守卫条件：仅 `frontmatter.date` 存在才注入。
+  - 验证：构建通过；4 篇文章页 HTML 中 H1 严格在 meta 之前；DOM 快照确认渲染顺序 `H1 → meta → 正文`；about/首页/列表页无注入。复用现有 CSS 类，视觉零变化。
 
 - [x] **#2 两套数据加载逻辑需统一** ✅
   - 现状：`PostList.vue` 用 `createContentLoader`；`config.mts` 的 `getSidebarItems` 用 `fs.readdirSync` + 正则。

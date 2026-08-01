@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { vextabPlugin } from './markdown-it-vextab'
+import { postmetaPlugin } from './markdown-it-postmeta'
 
 export default defineConfig({
   base: '/blog-ctz-v2/',
@@ -12,6 +13,7 @@ export default defineConfig({
     },
     config: (md) => {
       md.use(vextabPlugin)
+      md.use(postmetaPlugin)
     }
   },
   head: [

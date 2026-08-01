@@ -10,13 +10,6 @@ author: 310
 
 # 我为什么要弹吉他
 
-<div class="post-info">
-  <time>2026-07-20</time>
-  <span class="post-author">by 310</span>
-  <span class="post-tag">写作</span>
-  <span class="post-tag">吉他</span>
-</div>
-
 ## 时间顺序版
 
 我开始弹吉他的契机是被朋友拉去弹键盘，这让我发觉我对于钢琴没有吉他那样的认同感。

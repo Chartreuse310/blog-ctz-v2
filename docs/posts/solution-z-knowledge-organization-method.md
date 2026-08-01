@@ -9,12 +9,6 @@ tags:
 
 # 关于我的终极（？）知识组织方法——Solution Z的第一版设计
 
-<div class="post-info">
-  <time>2026-07-03</time>
-  <span class="post-tag">PKM</span>
-  <span class="post-tag">Solution Z</span>
-</div>
-
 最近在TRAE AI创意大赛的推动下，强行梳理了最近的知识组织方式，忽然发现这其实是一种结合了PARA系统、卡片笔记写作法、子弹笔记、Obsidian作者用法的巨型缝合怪！
 
 这里面也有亿点点🤏我自己的思考，主要差异在于我是一个心理上更希望体系能**长期主义**一些的人，因此在我的心目中”领域（Area）“是比”项目（Project）“重要的。

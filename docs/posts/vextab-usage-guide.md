@@ -10,13 +10,6 @@ tags:
 
 # VexTab使用方法
 
-<div class="post-info">
-  <time>2026-07-10</time>
-  <span class="post-tag">vextab</span>
-  <span class="post-tag">吉他</span>
-  <span class="post-tag">程序</span>
-</div>
-
 ## 什么是VexTab？
 
 VexTab是一种书写乐谱的语言，通过Obsidian中的VexTab插件<sup><a href="#fn-1" id="fnref-1">[1]</a></sup>和一些在线编辑网站<sup><a href="#fn-2" id="fnref-2">[2]</a></sup>，可以简单地编写谱子，并渲染成tab和五线谱。
