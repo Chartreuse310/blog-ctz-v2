@@ -41,7 +41,8 @@ export default defineConfig({
       message: '基于 VitePress 构建',
       copyright: '© 2024-Present CTZ'
     },
-    outline: false
+    outline: false,
+    lastUpdatedText: '最后更新于'
   },
   transformHead: ogTransformHead,
   buildEnd: buildRSS,
