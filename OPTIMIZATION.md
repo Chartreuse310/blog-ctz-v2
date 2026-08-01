@@ -29,8 +29,13 @@
 
 ## 🟡 建议优化
 
-- [ ] **#4 SEO / 内容发现基础设施缺失**
+- [x] **#4 SEO / 内容发现基础设施缺失** ✅
   - 缺 sitemap.xml、RSS feed、OG/Twitter Card meta。
+  - 落地（2026-08-01）：
+    - **Sitemap**：VitePress 1.6.4 原生支持，`config.mts` 加 `sitemap.hostname`（必须含 base + 尾斜杠，否则 URL 丢 base 段）。构建自动生成 sitemap.xml，7 个 URL 全部含 base。
+    - **OG / Twitter Card**：新增 `og.ts`，用 `transformHead` 钩子从 frontmatter 批量生成 per-page meta（title/excerpt/date/tags 复用）。文章页 og:type=article（含 article:published_time），首页/about og:type=website。twitter:card=summary_large_image。
+    - **RSS**：新增 `rss.ts`，用 `buildEnd` + `createContentLoader('posts/*.md')` 复用单一数据源 + `feed` 包生成 RSS 2.0 feed.xml。head 加 RSS 自动发现标签。
+  - TODO（待你后续处理）：og:image 当前引用 `og/default.png` 但**图片文件尚未创建**，需设计一张 1200×630 默认分享图放到 `docs/public/og/default.png`。文件缺失时分享预览无图但不报错。
 
 - [ ] **#5 未启用本地搜索**
   - 方案：`themeConfig.search = { provider: 'local' }`。

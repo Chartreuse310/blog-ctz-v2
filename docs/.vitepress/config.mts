@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitepress'
 import { vextabPlugin } from './markdown-it-vextab'
 import { postmetaPlugin } from './markdown-it-postmeta'
+import { transformHead as ogTransformHead } from './og'
+import { buildRSS } from './rss'
 
 export default defineConfig({
   base: '/blog-ctz-v2/',
@@ -17,10 +19,15 @@ export default defineConfig({
     }
   },
   head: [
-    ['link', { rel: 'icon', href: '/blog-ctz-v2/favicon.svg', type: 'image/svg+xml' }]
+    ['link', { rel: 'icon', href: '/blog-ctz-v2/favicon.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: "CTZ's Blog", href: '/blog-ctz-v2/feed.xml' }]
   ],
   ignoreDeadLinks: true,
   lastUpdated: true,
+  sitemap: {
+    // hostname 必须含 base 与尾斜杠，否则 sitemap 内 URL 会丢失 base 段
+    hostname: 'https://chartreuse310.github.io/blog-ctz-v2/'
+  },
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
@@ -36,6 +43,8 @@ export default defineConfig({
     },
     outline: false
   },
+  transformHead: ogTransformHead,
+  buildEnd: buildRSS,
   vite: {
     ssr: {
       noExternal: ['vextab', 'vexflow']

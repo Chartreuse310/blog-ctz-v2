@@ -8,6 +8,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
+    "feed": "^6.0.0",
     "vexflow": "^5.0.0",
     "vextab": "^4.0.5",
     "vitepress": "^1.6.3",
