@@ -3,7 +3,7 @@ title: VexTab使用方法
 date: 2026-07-10
 excerpt: VexTab是一种书写乐谱的语言，通过简单的语法即可编写吉他谱和五线谱。本文介绍VexTab的基本语法、常用参数和使用模板。
 tags:
-  - vextab
+  - VexTab
   - 吉他
   - 程序
 ---
