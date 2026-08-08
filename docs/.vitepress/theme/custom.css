@@ -309,7 +309,7 @@
   margin: 16px 0 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 16px;
 }
 
@@ -339,7 +339,7 @@
 .tag-filter-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 8px;
 }
 
